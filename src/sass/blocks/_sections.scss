@@ -1,0 +1,18 @@
+.section_header {
+    &_img {
+        width: 60px;
+        margin: 0 auto;
+    }
+    &_icon {
+        width: 100%;
+    }
+    &_title {
+        text-align: center;
+        margin-top: -6px;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 38px;
+        color: $main-color-yellow;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    }
+}

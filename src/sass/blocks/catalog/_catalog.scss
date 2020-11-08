@@ -1,0 +1,70 @@
+.catalog {
+    background: linear-gradient(180deg, #9900FF 0, #F8A427 50%, #0099FF 100%);
+    &__header {
+        &-img {
+            width: 60px;
+            margin: 0 auto;
+        }
+        &-icon {
+            width: 100%;
+        }
+        &-title {
+            text-align: center;
+            margin-top: -6px;
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 38px;
+            color: $main-color-yellow;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+    }
+    &__overflow {
+        position: relative;
+        height: 44px;
+        margin-bottom: 15px;
+    }
+    &__tabs {
+        position: absolute;
+        width: 316px;
+        left: -13px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none;
+        position: relative;
+    }
+    &__tab {
+        font-weight: 500;
+        width: 104px;
+        height: 40px;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        color: #FFFFFF;
+        cursor: pointer;
+        &:hover {
+            color: $main-color-yellow;
+            background-color: #430196;
+        }
+        &:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        &:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        &_active {
+            color: $main-color-yellow;
+            background-color: #430196;
+        }        
+    }
+    /* Карточка товара */
+    @import 'product';
+}
+.divider {
+    width: 2px;
+    height: 44px;
+    background-color: #fff;
+}
+@import 'areals';

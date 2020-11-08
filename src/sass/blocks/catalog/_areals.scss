@@ -1,0 +1,74 @@
+/* Мифические существа */
+.myth {
+    background: url(../img/bg/bg_myth.png) center no-repeat;
+    &_action {        
+        color: #420096; 
+    }
+    &_back {
+        color: #420096; 
+    }
+    &_old-price{
+        color: #420096; 
+    }
+    &_price {
+        color: #420096; 
+    }
+    &_button {
+        background-color: #420096;
+        transition: all .5s;
+        &:hover {
+            background-color: #fff;
+            color: $main-color;
+        } 
+    }
+}
+
+/* Зверушки и растения */
+.beast {
+    background: url(../img/bg/bg_beast.png) center no-repeat;
+    &_action {        
+        color: #4B2D1A; 
+    }
+    &_back {
+        color: #4B2D1A; 
+    }
+    &_old-price{
+        color: #4B2D1A; 
+    }
+    &_price {
+        color: #4B2D1A; 
+    }
+    &_button {
+        background-color: #4B2D1A;
+        transition: all .5s;
+        &:hover {
+            background-color: #fff;
+            color: #4B2D1A;
+        }  
+    }
+}
+
+/* Морские обитатели */
+.sea {
+    background: url(../img/bg/bg_sea.png) center no-repeat;
+    &_action {        
+        color: #037EB2; 
+    }
+    &_back {
+        color: #037EB2; 
+    }
+    &_old-price{
+        color: #037EB2; 
+    }
+    &_price {
+        color: #037EB2; 
+    }
+    &_button {
+        background-color: #037EB2;
+        transition: all .5s;
+        &:hover {
+            background-color: #fff;
+            color: #037EB2;
+        }          
+    }
+}

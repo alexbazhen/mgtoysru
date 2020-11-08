@@ -1,0 +1,115 @@
+.btn_menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 54px;
+    height: 60px;
+    background-color: #470399;
+    border-top: 2px solid #F4D44E;
+    border-right: 2px solid #F4D44E;
+    border-bottom: 2px solid #F4D44E;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    top: 80px;
+    cursor: pointer;
+    z-index: 10;
+    &-img {
+        width: 40px;
+        height: 40px;
+    }
+    &-icon {
+        width: 100%;
+    }
+    &-text {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        color: $main-color-yellow;
+    }
+}
+.menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    z-index: 15;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    transition: all .3s;
+    background: linear-gradient(180deg, #5E27C1 0%, #9F7CDF 50%, #FC5C7D 100%);
+    &.active {
+        left: 0;
+        opacity: 1;
+    }
+    &__block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100vh;
+        padding-bottom: 20px;
+    }
+    &__close {
+        align-self: end;
+        width: 70px;
+        height: 70px;
+        position: relative;
+        align-items: end;
+        cursor: pointer;
+        &>span {
+            display: block;
+            position: absolute;
+            bottom: 20px;
+            width: 50px;
+            height: 6px;
+            border-radius: 12px;
+            background-color: $main-color-yellow;
+            transform: rotate(45deg);
+            &:last-child {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+    &__items {
+        display: grid;
+        margin: 0 auto;
+        list-style-type: none;
+        grid-template-columns: repeat(2, 135px);
+        grid-template-rows: 108px;
+        grid-auto-rows: 108px;
+        row-gap: 20px;
+        column-gap: 20px;
+        justify-content: center;
+        justify-items: center;
+    }
+    &__url {        
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    &__item {
+        &:last-child {
+            grid-column: 1 / 3;
+        }
+        &-text {
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 28px;
+            color: $main-color-yellow;            
+        }
+        &-icons {
+            width: 80px;
+            margin: 0 auto;
+        }
+        &-img {
+            width: 100%;
+        }
+    }
+    &__logo {
+        display: none;
+    }
+
+}

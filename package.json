@@ -1,0 +1,32 @@
+{
+  "name": "magic_toys",
+  "version": "1.0.0",
+  "description": "Site for toy shop Magic Toys",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "mgtoys"
+  },
+  "keywords": [
+    "shop",
+    "landing",
+    "toys",
+    "magic"
+  ],
+  "author": "Alexander Bazhenov",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.26.13",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0"
+  }
+}
