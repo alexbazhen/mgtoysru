@@ -1,0 +1,83 @@
+@keyframes fly {
+    25% {
+        transform: translateX(-25%) translateY(-10%) rotate(-25deg);
+    }
+    50% {
+        transform: translateX(-40%) translateY(10%) rotate(10deg);
+    }
+    75% {
+        transform: translateX(-25%) translateY(15%) rotate(40deg);
+    }
+    100% {
+        transform: translateX(0) rotate(0);
+    }
+}
+@keyframes textFly {
+    50% {
+        transform: translateX(15%) translateY(50%) rotate(45deg);
+    }
+}
+@keyframes textFlyRevers {
+    50% {
+        transform: translateX(50%) translateY(30%) rotate(-45deg);
+    }
+}
+.error-page {
+    background: linear-gradient(180deg, #450298 0%, #B750E4 100%);
+    padding-top: 150px;
+    padding-bottom: 40px;
+    &__title {
+        margin-top: 17px;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+        color: $main-color-yellow;
+    }
+    &__subtitle {
+        margin-top: 8px;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 23px;
+        text-align: center;
+        color: $main-color-yellow;
+    }
+    &__url {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #F4A32C;
+    }
+    &__wrapper {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    &__unicorn {
+        grid-row: 1 / 3;
+        z-index: 4;
+        animation: fly 10s infinite linear;
+        &>img {
+            width: 100%;
+        }
+    }
+    &__ooops {
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #F4A32C;
+        transform: rotate(-17deg);
+        animation: textFly 20s infinite linear;
+    }
+    &__error {
+        z-index: 4;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #F4D952;
+        transform: rotate(21deg);
+        animation: textFlyRevers 20s infinite linear;
+    }
+}

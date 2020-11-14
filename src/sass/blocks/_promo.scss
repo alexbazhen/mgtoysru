@@ -7,6 +7,7 @@
     }
     &__content {
         height: calc(100vh - 150px);
+        padding-bottom: 10px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -60,12 +61,11 @@
             transition: all .5s;
             color: $main-color-yellow;
             &:hover {
-                color: $main-color;
+                color: #fff;
             }
         }
     }
     &__gonext { 
-        margin-bottom: 10vh;
         &-text {
             font-weight: bold;
             font-size: 16px;

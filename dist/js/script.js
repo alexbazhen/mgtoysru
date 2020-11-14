@@ -1,5 +1,6 @@
 /* Прелоадер */
 const hellopreloader = document.getElementById("hellopreloader_preload");
+const API_URL = 'https://mgtoys.ru:8081/api';
 
 function fadeOutnojquery(el) {
     el.style.opacity = 1;
@@ -18,6 +19,25 @@ window.onload = function () {
 };
 /* После загрузки страницы */
 window.addEventListener('DOMContentLoaded', () => {
+    /* Определение высоты видимости для первой секции для мобилок */
+    let visibleWindowHeight = window.innerHeight,
+        heightContent = visibleWindowHeight - 150;
+    const promoContent = document.querySelector('#promoContent'),
+          menuForMob = document.querySelector('#menuBlock');
+    menuForMob.style.height=visibleWindowHeight + "px";
+    if (document.documentElement.clientWidth < 576) {
+        promoContent.style.height=heightContent + "px";
+    }
+    window.addEventListener('resize', (e) => {
+        visibleWindowHeight = window.innerHeight;
+        menuForMob.style.height=visibleWindowHeight + "px";
+        if (document.documentElement.clientWidth < 576) {
+            heightContent = visibleWindowHeight - 150;
+            promoContent.style.height=heightContent + "px";
+        } else {
+            promoContent.removeAttribute('style');
+        }
+    });
     /* Меню */
     const menuTrigger = document.querySelectorAll('[data-triggermenu]'),
           menu = document.querySelector('.menu');
@@ -40,6 +60,17 @@ window.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.code === "Escape" && menu.classList.contains('show')) {
             menuClose();
+        }
+    });
+
+    /* Появление кнопки меню везде, кроме мобилок */
+    const btnMenu = document.querySelector('#menubtn');
+    window.addEventListener('scroll', (e) => {
+        if (window.pageYOffset > 149 && document.documentElement.clientWidth > 575) {
+            btnMenu.classList.add('active_menu');
+        }
+        if (window.pageYOffset < 150 && document.documentElement.clientWidth > 575) {
+            btnMenu.classList.remove('active_menu'); 
         }
     });
     /* Модальные окна */
@@ -244,7 +275,7 @@ window.addEventListener('DOMContentLoaded', () => {
         "1290", 
         "1600", 
         40, 
-        "Маме"
+        "Голубино-белоснежный"
         ).render();
     new ToysCard(
         6, 
@@ -397,11 +428,13 @@ window.addEventListener('DOMContentLoaded', () => {
         let btnOrder = cardToy.querySelector('[data-order]'),
             nameToys = cardToy.querySelector('.catalog-product__name').textContent,
             modalOrder = document.querySelector('#modalOrder'),
-            orderNameToys = modalOrder.querySelector('#order_toy');
+            orderNameToys = modalOrder.querySelector('#order_toy'),
+            nameToyOrder = modalOrder.querySelector('#nameToyOrder');
 
             btnOrder.addEventListener('click', (e) => {
                 e.preventDefault();
                 orderNameToys.textContent = nameToys;
+                nameToyOrder.value = `${orderNameToys.textContent}`;
                 modalOrder.classList.add('active');
             });            
     });
@@ -424,10 +457,192 @@ window.addEventListener('DOMContentLoaded', () => {
     promoOrderBtn.addEventListener('click', (e) => {
         const promoNameToy = document.querySelector('#promo_toy_name').textContent,
         modalOrderPromo = document.querySelector('#modalOrder'),
-        orderNameToy = modalOrderPromo.querySelector('#order_toy');
+        orderNameToy = modalOrderPromo.querySelector('#order_toy'),
+        nameToyOrder = document.querySelector('#nameToyOrder');
         e.preventDefault();
         orderNameToy.textContent = `${promoNameToy} по акции "Игрушка недели"`;
+        nameToyOrder.value = `${orderNameToy.textContent}`;
         modalOrderPromo.classList.add('active');
 
     });
+
+
+    /* Slider */
+    const slider = document.querySelector('#slider'),
+          slideBackBtn = slider.querySelector('#slideBackBtn'),
+          slideNextBtn = slider.querySelector('#slideNextBtn'),
+          activeReview = slider.querySelector('#activeReview'),
+          prevReview = slider.querySelector('#prevReview'),
+          nextReview = slider.querySelector('#nextReview');
+    let activeNum = 1,
+        revNum = 2,
+        nextNum = 3;
+    slideBackBtn.addEventListener('click', (e) => {
+        switch (activeNum) {
+            case 1:
+                activeNum = 2;
+                revNum = 3;
+                nextNum = 1;
+            break;
+            case 2:
+                activeNum = 3;
+                revNum = 1;
+                nextNum = 2;
+            break;
+            case 3:
+                activeNum = 1;
+                revNum = 2;
+                nextNum = 3;
+            break;
+        }
+        activeReview.src = `img/reviews/review_${activeNum}.png`;
+        prevReview.src = `img/reviews/review_${revNum}.png`;
+        nextReview.src = `img/reviews/review_${nextNum}.png`;
+    });
+    slideNextBtn.addEventListener('click', (e) => {
+        switch (activeNum) {
+            case 1:
+                activeNum = 3;
+                revNum = 1;
+                nextNum = 2;
+            break;
+            case 2:
+                activeNum = 1;
+                revNum = 2;
+                nextNum = 3;
+            break;
+            case 3:
+                activeNum = 2;
+                revNum = 3;
+                nextNum = 1;
+            break;
+        }
+        activeReview.src = `img/reviews/review_${activeNum}.png`;
+        prevReview.src = `img/reviews/review_${revNum}.png`;
+        nextReview.src = `img/reviews/review_${nextNum}.png`;
+    });
+    prevReview.addEventListener('click', (e) => {
+        switch (activeNum) {
+            case 1:
+                activeNum = 2;
+                revNum = 3;
+                nextNum = 1;
+            break;
+            case 2:
+                activeNum = 3;
+                revNum = 1;
+                nextNum = 2;
+            break;
+            case 3:
+                activeNum = 1;
+                revNum = 2;
+                nextNum = 3;
+            break;
+        }
+        activeReview.src = `img/reviews/review_${activeNum}.png`;
+        prevReview.src = `img/reviews/review_${revNum}.png`;
+        nextReview.src = `img/reviews/review_${nextNum}.png`;
+    });
+    nextReview.addEventListener('click', (e) => {
+        switch (activeNum) {
+            case 1:
+                activeNum = 3;
+                revNum = 1;
+                nextNum = 2;
+            break;
+            case 2:
+                activeNum = 1;
+                revNum = 2;
+                nextNum = 3;
+            break;
+            case 3:
+                activeNum = 2;
+                revNum = 3;
+                nextNum = 1;
+            break;
+        }
+        activeReview.src = `img/reviews/review_${activeNum}.png`;
+        prevReview.src = `img/reviews/review_${revNum}.png`;
+        nextReview.src = `img/reviews/review_${nextNum}.png`;
+    });
+
+    /* Копирование промокода */
+    const promocode = document.querySelector('#instCode'),
+          textCode = promocode.querySelector('input'),
+          copyBtn = promocode.querySelector('button');
+    copyBtn.addEventListener('click', (e) => {
+        textCode.select();
+        document.execCommand("copy");
+        copyBtn.innerText = 'Скопирован!';
+    });
+
+    /* Forms */
+    document.addEventListener('submit', (e) => {
+        const target = e.target;
+        e.preventDefault();
+
+        const formEntries = Array.from(new FormData(target));
+        const urlencoded = new URLSearchParams();
+        formEntries.forEach((entry) => {
+            urlencoded.append(entry[0], entry[1]);
+        });
+        console.log(urlencoded);
+        fetch(`${API_URL}/feedback`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: urlencoded
+        });
+    });
+
+
+
+
+
+
+
+    /* Маска ввода телефона */
+    function maskPhone(selector, masked = '+7 (___) ___-__-__') {
+        const elems = document.querySelectorAll(selector);
+    
+        function mask(event) {
+            const keyCode = event.keyCode;
+            const template = masked,
+                def = template.replace(/\D/g, ""),
+                val = this.value.replace(/\D/g, "");
+            console.log(template);
+            let i = 0,
+                newValue = template.replace(/[_\d]/g, function (a) {
+                    return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
+                });
+            i = newValue.indexOf("_");
+            if (i !== -1) {
+                newValue = newValue.slice(0, i);
+            }
+            let reg = template.substr(0, this.value.length).replace(/_+/g,
+                function (a) {
+                    return "\\d{1," + a.length + "}";
+                }).replace(/[+()]/g, "\\$&");
+            reg = new RegExp("^" + reg + "$");
+            if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+                this.value = newValue;
+            }
+            if (event.type === "blur" && this.value.length < 5) {
+                this.value = "";
+            }
+    
+        }
+    
+        for (const elem of elems) {
+            elem.addEventListener("input", mask);
+            elem.addEventListener("focus", mask);
+            elem.addEventListener("blur", mask);
+        }
+        
+    }
+    
+    maskPhone('.form__telephone');
+
+    /* Конец маски ввода */
 });

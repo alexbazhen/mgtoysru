@@ -159,6 +159,8 @@
         }
     }
     &__btn {
+        position: relative;
+        z-index: 4;
         width: 270px;
         height: 60px;
         background: $main-color;

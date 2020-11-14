@@ -1,0 +1,17 @@
+.privacy {
+    background: linear-gradient(180deg, #450298 0%, #450298 50%, #B750E4 100%);
+    padding-top: 150px;
+    padding-bottom: 80px;
+    color: #F4D952;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    &__title {
+        text-align: center;
+        margin-top: 30px;
+        color: #F4D952;
+    }
+    &__wrapper {
+        margin-top: 20px;
+        padding: 0 20px;
+    }
+    
+}

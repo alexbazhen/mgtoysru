@@ -77,8 +77,38 @@
             color: $main-color-yellow;
         }
         &__code {
-            border: none;
+            display: flex;
             border-radius: 10px;
+            background-color: #fff;
+            &-code {
+                border: none;
+                width: 60%;
+                padding: 10px;
+                text-align: center;
+                color: $main-color;
+                font-weight: bold;
+                font-size: 20px;
+                line-height: 24px;
+                text-transform: uppercase;
+                font-feature-settings: 'pnum' on, 'lnum' on;
+                align-self: center;
+                border-radius: 10px;
+            }
+            &-btn {
+                width: 40%;
+                height: 100%;
+                background-color: $main-color;
+                color: $main-color-yellow;
+                border: none;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                font-weight: bold;
+                transition: all .6s;
+                &:hover {
+                    background-color: $main-color-yellow;
+                    color: $main-color;
+                }
+            }
         }        
     }
     /* Заказ */

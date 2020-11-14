@@ -12,8 +12,15 @@
         width: 540px;
     }
     .btn_menu {
+        transition: all 1s;
+        opacity: 0;
         width: 80px;
         height: 84px;
+        cursor: unset;
+        &.active_menu {
+            opacity: 1;
+            cursor: pointer;
+        }
         &-img {
             width: 60px;
             height: 60px;
@@ -85,6 +92,7 @@
         &__content {
             height: unset;
             width: 230px;
+            padding-bottom: unset;
         }
         &__title {
             font-size: 24px;
@@ -237,6 +245,17 @@
         &__developer__info-logo {
             margin-right: 10px;
         }
+    }
+    .error-page {
+        height: 60vh;
+        &__title {
+            margin-top: 25px;
+        }
+        &__wrapper {
+            margin: 40px auto 0;
+            justify-content: center;
+            grid-template-columns: repeat(2, 150px);
+        }
     }    
 }
 
@@ -257,10 +276,17 @@
                 height: 60px;
                 font-weight: bold;
                 font-size: 24px;
-                line-height: 28px;
+                line-height: 60px;
                 text-align: center;
                 color: $main-color-yellow;
                 margin-bottom: 10px;
+                cursor: pointer;
+                transition: all .5s;
+                &:hover {
+                    background-color: $main-color-yellow;
+                    color: #833AB4;
+                    text-decoration: none;
+                }
             }
         }
         &__text {
@@ -538,6 +564,34 @@
             }
         }
     }
+    .error-page {
+        height: calc(100vh - 198px);
+        padding-bottom: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__wrapper {
+            grid-template-columns: repeat(2, 250px);
+        }
+        &__title {
+            margin-top: 60px;
+            font-size: 48px;
+            line-height: 56px;
+        }
+        &__subtitle {
+            font-size: 30px;
+            line-height: 35px;
+        }
+        &__url {
+            font-size: 34px;
+        }
+        &__ooops {
+            font-size: 36px;
+        }
+        &__error {
+            font-size: 38px;
+        }
+    }
 }
 
 @media (min-width: 992px) {
@@ -619,6 +673,16 @@
                 font-size: 26px;
                 line-height: 32px;
             }
+            &__code {
+                &-code {
+                    font-size: 26px;
+                    line-height: 30px;
+                }
+                &-btn {
+                    font-size: 26px;
+                    line-height: 30px;
+                }
+            }
         }
         &__order {
             &__window {
@@ -658,6 +722,22 @@
     }
     .reviews {
         padding-bottom: 70px;
+        &__slider {
+            align-items: center;
+            &__review {
+                display: block;
+                &_left {
+                    width: 180px;
+                    height: 340px;
+                    margin-right: 40px;
+                }
+                &_right {
+                    width: 180px;
+                    height: 340px;
+                    margin-left: 40px;
+                }
+            }
+        }
     }
     .pay {
         padding-top: 20px;
@@ -681,6 +761,9 @@
                 justify-content: center;
             }
         }
+    }
+    .error-page {
+        height: calc(100vh - 180px);
     }
 }
 

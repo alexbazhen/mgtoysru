@@ -12,6 +12,12 @@
     margin: 0;
     padding: 0;
 }
+body {
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+input {
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
 .container {
     width: 290px;
     margin: 0 auto;
@@ -61,6 +67,9 @@
 @import 'blocks/ship/ship';
 @import 'blocks/pay/pay';
 @import 'blocks/feedback/feedback';
+
+@import 'blocks/404/404';
+@import 'blocks/privacy/privacy';
 
 @import 'blocks/footer/footer';
 
