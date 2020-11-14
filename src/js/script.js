@@ -293,8 +293,8 @@ window.addEventListener('DOMContentLoaded', () => {
         7, 
         "sea", 
         "img/products/product_id7.png", 
-        "Игрушка Акулка не из икеи", 
-        "Акулка не из икеи", 
+        "Игрушка Акулка из икеи", 
+        "Акулка из икеи", 
         "Легендарная акулка, покинувшая старые берега", 
         "1090", 
         "1300", 
@@ -349,6 +349,11 @@ window.addEventListener('DOMContentLoaded', () => {
         55, 
         "Морская волна"
         ).render();
+        new ToysCard(12, "beast", "img/products/product_id12.png", "Игрушка Бычок Бодя", "Бычок Бодя", "Любит в шутку бодаться", "990", "1200", 30, "Белоснежный").render();
+        new ToysCard(13, "beast", "img/products/product_id13.png", "Игрушка Бурёнка Даша", "Бурёнка Даша", "Уверена, что розовый подчеркнет женственность!", "790", "990", 25, "Нежно-розовый").render();
+        new ToysCard(14, "beast", "img/products/product_id14.png", "Игрушка Бурёнка Глаша", "Бурёнка Глаша", "Считает, что сиреневый выглядит просто волшебно!", "790", "990", 25, "Летняя сирень").render();
+        new ToysCard(15, "beast", "img/products/product_id15.png", "Игрушка Бурёнка Маша", "Бурёнка Маша", "Знает, что вместе с сестренками, они создают лучшее сочетание!", "790", "990", 25, "Голубовато-зеленый лед").render();
+        
 
 
     /* Открытие информации в карточке товара */
@@ -577,9 +582,20 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     /* Forms */
+    const messages = {
+        loading: '',
+        success: 'Спасибо, скоро мы свяжемся с Вами!',
+        failure: 'Ой, что-то пошло не так, попробуйте ввести данные снова'
+    };
+
     document.addEventListener('submit', (e) => {
         const target = e.target;
         e.preventDefault();
+
+        console.log(target);
+        const btnSend = target.querySelector('button');
+        const textInBtnSend = btnSend.innerHTML;
+        btnSend.innerHTML = '<img src="icons/loading/loadingMess.svg">';
 
         const formEntries = Array.from(new FormData(target));
         const urlencoded = new URLSearchParams();
@@ -593,9 +609,24 @@ window.addEventListener('DOMContentLoaded', () => {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: urlencoded
+        }).then(data => {
+            btnSend.innerHTML = 'Спасибо!';
+            target.reset();
+            setTimeout(() => {
+                btnSend.innerHTML = textInBtnSend;
+            }, 5000);
+        }).catch(() => {
+            btnSend.innerHTML = 'Ой, ошибка';
+            setTimeout(() => {
+                btnSend.innerHTML = textInBtnSend;
+            }, 5000);
         });
     });
 
+    /* function showThanksModal(message) {
+
+    }
+ */
 
 
 
