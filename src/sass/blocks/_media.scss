@@ -6,6 +6,11 @@
         }
     }
 }
+@media (min-width: 410px) {
+    .social {
+        display: block;
+    }
+}
 /* Обычный адапт */
 @media (min-width: 576px) {
     .container {
@@ -28,6 +33,21 @@
         &-text {
             font-size: 20px;
             line-height: 22px;
+        }
+    }
+    .social {
+        transition: all 1s;
+        opacity: 0;
+        left: -70px;
+        &.active_social {
+            opacity: 1;
+            left: 5px;            
+        }
+        &__item {
+            transition: all .5s;
+            &:hover {
+                transform: rotate(10deg);
+            }
         }
     }
     .header {

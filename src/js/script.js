@@ -65,12 +65,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
     /* Появление кнопки меню везде, кроме мобилок */
     const btnMenu = document.querySelector('#menubtn');
+    const btnSocial = document.querySelector('#socialbtn');
     window.addEventListener('scroll', (e) => {
         if (window.pageYOffset > 149 && document.documentElement.clientWidth > 575) {
             btnMenu.classList.add('active_menu');
+            btnSocial.classList.add('active_social');
         }
         if (window.pageYOffset < 150 && document.documentElement.clientWidth > 575) {
-            btnMenu.classList.remove('active_menu'); 
+            btnMenu.classList.remove('active_menu');
+            btnSocial.classList.remove('active_social'); 
         }
     });
     /* Модальные окна */
